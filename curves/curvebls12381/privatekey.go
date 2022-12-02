@@ -37,12 +37,7 @@ func (sk PrivateKey) PublicKey() PublicKey {
 	var pkPoint bls12381.G2Affine
 	pkPoint.ScalarMultiplication(&g2aff, &skBigInt)
 
-	// serialize the public key point
-	// TODO: can we use pkPoint.Bytes() instead to get a compressed representation? 96 bytes instead of 192
-	var pk PublicKey
-	copy(pk[:], pkPoint.Marshal())
-
-	return pk
+	return pkPoint.Bytes()
 }
 
 // coreSign computes a signature from sk, a secret key, and msg, a byte slice.
@@ -62,12 +57,7 @@ func (sk PrivateKey) coreSign(msg Message) (Signature, error) {
 	var sigPoint bls12381.G1Affine
 	sigPoint.ScalarMultiplication(&msgPoint, &skBigInt)
 
-	// serialize the signature point
-	// TODO: can we use sig.Bytes() instead to get a compressed representation? 48 bytes instead of 96
-	var sig Signature
-	copy(sig[:], sigPoint.Marshal())
-
-	return sig, nil
+	return sigPoint.Bytes(), nil
 }
 
 // Sign computes a signature from sk, a secret key, and msg, a byte slice.

@@ -6,7 +6,7 @@ import (
 	"github.com/consensys/gnark-crypto/ecc/bls12-381"
 )
 
-const PublicKeySize = 192 // size in bytes
+const PublicKeySize = 96 // size in bytes
 
 type PublicKey [PublicKeySize]byte
 

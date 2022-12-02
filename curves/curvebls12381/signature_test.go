@@ -15,7 +15,7 @@ func TestSignature_String(t *testing.T) {
 		{
 			name: "zero signature",
 			sig:  Signature{},
-			want: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+			want: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 		},
 	}
 	for _, tt := range tests {
@@ -38,7 +38,7 @@ func TestSignature_sigToPoint(t *testing.T) {
 			name:    "zero signature",
 			sig:     Signature{},
 			want:    bls12381.G1Affine{},
-			wantErr: false,
+			wantErr: true,
 		},
 		{
 			name:    "not in subgroup",

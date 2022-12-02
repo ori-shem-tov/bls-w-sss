@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	SignatureSize = 96 // size in bytes
+	SignatureSize = 48 // size in bytes
 )
 
 type Signature [SignatureSize]byte
